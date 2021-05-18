@@ -27,7 +27,7 @@ if (isset($_SESSION) && !empty($_SESSION['admin'])) {
                     <tr>
                         <td><?= $a['id_categorie'] ?></td>
                         <td><?= $a['nom'] ?></td>
-                        <td><a href="#?key=msg&id=<?= $a['id_categorie'] ?>"> <i style="color:red" class="far fa-trash-alt"></i></a></td>
+                        <td><a href="../action/delete.php?key=cat&id=<?= $a['id_categorie'] ?>"> <i style="color:red" class="far fa-trash-alt"></i></a></td>
 
 
                     </tr>
