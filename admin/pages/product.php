@@ -27,7 +27,7 @@ if (isset($_SESSION) && !empty($_SESSION['admin'])) {
                         <td><?= $a['id_produit'] ?></td>
                         <td><?= $a['nom'] ?></td>
                         <td><?= $a['prix'] ?></td>
-                        <td> <a href="#?key=product&id=<?= $a['id_produit'] ?>"><i class="far fa-2x fa-trash-alt"></i></a> <a href="#?p=editproduct&id=<?= $a['id_produit'] ?>"><i class="far fa-2x fa-edit" id="edit-product"></i></a> </td>
+                        <td> <a href="../action/delete.php?key=pro&id=<?= $a['id_produit'] ?>"><i class="far fa-2x fa-trash-alt"></i></a> <a href="#?p=editproduct&id=<?= $a['id_produit'] ?>"><i class="far fa-2x fa-edit" id="edit-product"></i></a> </td>
 
                     </tr>
                 <?php } ?>
