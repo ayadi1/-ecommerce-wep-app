@@ -1,5 +1,5 @@
 <?php 
-session_start();
+// session_start();
 class admin{
     public  static  $errorMgs = [];
     public  static function login($user_email, $user_password)
@@ -30,7 +30,7 @@ class admin{
 
                 $_SESSION['admin']['id'] = $r['id_admin'];
                 
-                // echo '<script>window.location.href = "index.php?p=home"</script>';
+                echo '<script>window.location.href = "index.php?p=dashboard"</script>';
             } else {
                 var_dump($r);
                 admin::$errorMgs = 'mot de passe incorrect';
@@ -42,12 +42,20 @@ class admin{
     // ajouter une categories
 
     public static function Addcategories($nom){
-        require_once '/db.php';
+        require_once 'db.php';
         $cat_nom = conn::test_input($nom);
         $sql = "INSERT INTO `categories`( `nom`, `id_admin`) VALUES ('$cat_nom',1)";
         $r = Conn::DB('marcana')->prepare($sql);
         $r->execute();
         var_dump($r);
+    }
+    public static function GetAllCategory(){
+        require_once 'db.php';
+        $sql = "SELECT * from categories";
+        $r = conn::DB('marcana')->prepare($sql);
+        $r->execute();
+        return $r->fetchAll();
+
     }
     
 

@@ -1,4 +1,4 @@
-<?php include_once '../includes/header.php' ?>
+<?php include_once 'includes/header.php' ?>
 
 
 <?php
@@ -16,4 +16,4 @@ if (file_exists("pages/$page.php")) {
 ?>
 
 
-<?php include_once '../includes/footer.php' ?>
+<?php include_once 'includes/footer.php' ?>

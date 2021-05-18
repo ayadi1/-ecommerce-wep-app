@@ -4,7 +4,7 @@
 
         public static function Addproduit($nom,$prix,$discription,$id_categorie)
         {
-        require_once 'functions/db.php';
+        require_once 'method/db.php';
         $nom = conn::test_input($nom);
         $prix = conn::test_input($prix);
         $discription = conn::test_input($discription);
@@ -15,7 +15,7 @@
         }
     public static function GetProduitList()
     {
-        require_once 'functions/db.php';
+        require_once 'db.php';
         $sql = "SELECT `id_produit`, `nom`, `prix`, `discription` FROM `produit`";
         $r = conn::DB('marcana')->prepare($sql);
         $r->execute();
