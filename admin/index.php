@@ -1,26 +1,19 @@
 <?php include_once '../includes/header.php' ?>
 
 
-<div class="card mt-5 row col-5 ">
-    <form action="../action/loginAdmin.php" method="post" id="login-admin-form">
-        <!-- Email input -->
-        <div class="form-outline mb-4">
-            <input name="email" type="email" id="form1Example1" class="form-control" />
-            <label class="form-label" for="form1Example1">Email address</label>
-        </div>
+<?php
+if (isset($_GET['p']) && !empty($_GET['p'])) {
 
-        <!-- Password input -->
-        <div class="form-outline mb-4">
-            <input name="password" type="password" id="form1Example2" class="form-control" />
-            <label class="form-label" for="form1Example2">Password</label>
-        </div>
+    $page = $_GET['p'];
+} else {
+    $page = 'home';
+}
+if (file_exists("pages/$page.php")) {
+    require_once "pages/$page.php";
+} else {
+    require_once "pages/404.php";
+}
+?>
 
-        <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-    </form>
-</div>
-
-<div id="preview"></div>
-<div id="err"></div>
 
 <?php include_once '../includes/footer.php' ?>
