@@ -61,7 +61,7 @@ if (isset($_SESSION) && !empty($_SESSION['admin'])) {
                 <!-- Left links -->
                 <?php if(!$logged){?>
                 <div class="d-flex align-items-center">
-                    <a role="button" href="index.php?p=login" type="button" class="btn btn-link px-3 me-2 text-theme">
+                    <a role="button" href="index.php?p=home" type="button" class="btn btn-link px-3 me-2 text-theme">
                         Login
                     </a>
                     

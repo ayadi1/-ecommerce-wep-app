@@ -7,7 +7,7 @@ if(isset($_POST)){
         $password = conn::test_input($_POST['password']);
         require_once '/wamp64/www/marcana/method/admin.php';
         admin::login($email,$password);
-        var_dump(admin::$errorMgs); 
+        echo admin::$errorMgs; 
 
     }
 }

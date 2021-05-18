@@ -1,7 +1,7 @@
 <?php 
-// session_start();
+
 class admin{
-    public  static  $errorMgs = [];
+    public  static  $errorMgs = '';
     public  static function login($user_email, $user_password)
     {
         require_once '/wamp64/www/marcana/method/db.php';
@@ -26,17 +26,17 @@ class admin{
         if ($r->rowCount() > 0) {
             $r = $r->fetch();
             // var_dump($r['password']);
+            session_start();
             if (password_verify($password, $r['password'])) {
 
                 $_SESSION['admin']['id'] = $r['id_admin'];
                 
                 echo '<script>window.location.href = "index.php?p=dashboard"</script>';
             } else {
-                var_dump($r);
-                admin::$errorMgs = 'mot de passe incorrect';
+                admin::$errorMgs = "<script>Swal.fire({   icon: 'error',   title: 'Oops...',   text: 'email or password wrong!' })</script>";
             }
         } else {
-            admin::$errorMgs = 'e-mail erroné';
+            admin::$errorMgs = "<script>Swal.fire({   icon: 'error',   title: 'Oops...',   text: 'email or password wrong!' })</script>";
         }
     }
     // ajouter une categories
@@ -47,7 +47,6 @@ class admin{
         $sql = "INSERT INTO `categories`( `nom`, `id_admin`) VALUES ('$cat_nom',1)";
         $r = Conn::DB('marcana')->prepare($sql);
         $r->execute();
-        var_dump($r);
     }
     public static function GetAllCategory(){
         require_once 'db.php';

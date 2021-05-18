@@ -1,5 +1,5 @@
-<?php 
-if(isset($_SESSION) && !empty($_SESSION['admin']))
+<?php
+if (isset($_SESSION) && !empty($_SESSION['admin']))
     echo "<script>window.location.href = 'index.php?p=dashboard'</script>";
 ?>
 <div class="card mt-5 row col-5 ">

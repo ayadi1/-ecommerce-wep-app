@@ -2,14 +2,14 @@
  class produit{
         public  static  $errorMgs = [];
 
-        public static function Addproduit($nom,$prix,$discription,$id_categorie)
+        public static function Addproduit($nom,$prix,$discription,$id_categorie,$img)
         {
-        require_once 'method/db.php';
+        require_once '../method/db.php';
         $nom = conn::test_input($nom);
         $prix = conn::test_input($prix);
         $discription = conn::test_input($discription);
         $id_categorie = conn::test_input($id_categorie);
-        $sql = "INSERT INTO `produit`( `nom`, `prix`, `discription`, `id_admin`, `id_categorie`) VALUES ('$nom','$prix','$discription',1,'$id_categorie')";
+        $sql = "INSERT INTO `produit`( `nom`, `prix`, `discription`, `id_admin`, `id_categorie`, `img`) VALUES ('$nom','$prix','$discription',1,'$id_categorie','$img')";
         $r = conn::DB('marcana')->prepare($sql);
         $r->execute();
         }
