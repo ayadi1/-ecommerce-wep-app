@@ -10,7 +10,7 @@ if(isset($_POST)){
         echo client::$errorMgs;
 
     }else{
-        echo "<script>Swal.fire({icon: 'error',title: 'Oops...',text: 'Something went wrong!'})</script>";
+        echo "<script>Swal.fire({icon: 'error',title: 'Oops...',text: 'enter the information!'})</script>";
 
     }
 }

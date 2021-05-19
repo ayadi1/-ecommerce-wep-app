@@ -21,4 +21,29 @@
         $r->execute();
         return $r->fetchAll();
     }
+    public static function getProductById($id)
+    {
+        require_once 'db.php';
+        try{
+            $sql = "SELECT p.nom,p.prix,p.discription,p.img ,c.nom as category  FROM produit p INNER JOIN categories c on c.id_categorie = p.id_categorie WHERE `id_produit` = '$id' ";
+            $r = conn::DB('marcana')->prepare($sql);
+            $r->execute();
+            return $r->fetchAll();
+
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+    public static function getAllProduct()
+    {
+        require_once 'db.php';
+        try {
+            $sql = "SELECT p.id_produit, p.nom,p.prix,p.discription,p.img ,p.img ,c.nom as category  FROM produit p INNER JOIN categories c on c.id_categorie = p.id_categorie  ";
+            $r = conn::DB('marcana')->prepare($sql);
+            $r->execute();
+            return $r->fetchAll();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 }

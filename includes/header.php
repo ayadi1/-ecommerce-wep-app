@@ -1,6 +1,7 @@
 <?php session_start();
 $active_client = false;
 if (isset($_SESSION) && !empty($_SESSION['client'])) {
+    $id_c = $_SESSION['client']['id'];
 
     $active_client = true;
 }
@@ -17,6 +18,7 @@ if (isset($_SESSION) && !empty($_SESSION['client'])) {
 
     <!--  Styles  -->
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/card.css">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
@@ -61,20 +63,31 @@ if (isset($_SESSION) && !empty($_SESSION['client'])) {
                 </ul>
                 <!-- Left links -->
                 <?php if (!$active_client) { ?>
-                    <?php if($_SERVER['REQUEST_URI'] != '/marcana/admin/' || !empty($_SESSION['admin']) ){ ?>
-                    <div class="d-flex align-items-center">
-                        <a role="button" href="index.php?p=login" type="button" class="btn btn-link px-3 me-2 text-theme">
-                            Login
-                        </a>
-                        <a role="button" href="index.php?p=register" type="button" class="btn btn-primary btn-theme me-3">
-                            Sign up
-                        </a>
-                    </div>
-                    <?php }?>
+                    <?php if ($_SERVER['REQUEST_URI'] != '/marcana/admin/' || !empty($_SESSION['admin'])) { ?>
+                        <div class="d-flex align-items-center">
+                            <a role="button" href="index.php?p=login" type="button" class="btn btn-link px-3 me-2 text-theme">
+                                Login
+                            </a>
+                            <a role="button" href="index.php?p=register" type="button" class="btn btn-primary btn-theme me-3">
+                                Sign up
+                            </a>
+                        </div>
+                    <?php } ?>
                 <?php } else { ?>
                     <div class="d-flex align-items-center">
                         <a role="button" href="/marcana/dashboard.php" type="button" class="btn btn-primary btn-theme me-3">
                             dashboard
+                        </a>
+                    </div>
+                    <div class="d-flex align-items-center">
+                    <!-- get order number -->
+                    <?php  
+                    require_once 'method/order.php';
+                        $orderNumber = order::CountOrderByCLient($id_c);
+                    ?>
+                        <span class='product-number'><?= $orderNumber[0]['orderNumber'] ?></span>
+                        <a role="button" href="dashboard.php?p=order" type="button" class="btn btn-primary btn-floating me-3">
+                            <i class="fas fa-shopping-cart"></i>
                         </a>
                     </div>
 

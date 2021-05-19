@@ -1,5 +1,4 @@
 <?php require_once './includes/header.php'; ?>
-<?php require_once './includes/dash/sidebar.php'; ?>
 <?php
 if (isset($_SESSION) && !empty($_SESSION['client'])) { ?>
     <?php

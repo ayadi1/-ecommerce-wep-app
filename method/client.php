@@ -36,10 +36,10 @@ class client{
                 echo '<script>window.location.href = "index.php"</script>';
                  client::$errorMgs  = 'in';
             } else {
-                client::$errorMgs = "<script>Swal.fire({icon: 'error',title: 'Oops...',text: 'email exist!',})</script>";
+                client::$errorMgs = "<script>Swal.fire({icon: 'error',title: 'Oops...',text: 'error password!',})</script>";
             }
         } else {
-            client::$errorMgs = "<script>Swal.fire({icon: 'error',title: 'Oops...',text: 'email exist!',})</script>";
+            client::$errorMgs = "<script>Swal.fire({icon: 'error',title: 'Oops...',text: 'error email !',})</script>";
         }
     }
     // register 
@@ -58,10 +58,8 @@ class client{
         $r1 = conn::DB('marcana')->prepare($sql1);
         $r1->execute();
         $rslt = $r1->fetchAll();
-        // var_dump($rslt);
         $valid = true;
         foreach($rslt as $a){
-            // var_dump($a['email']);
             if($a['email'] === $email){
                 $valid = false;
                 
@@ -72,7 +70,7 @@ class client{
             $sql2 = "INSERT INTO `client`( `nom`, `email`, `password`, `adress`, `ville`, `tele`,`id_admin`) VALUES ('$nom','$email','$pss','$adress','$ville','$tele',1)";
             $r2 = conn::DB('marcana')->prepare($sql2);
             $r2->execute();
-            client::$errorMgs = "<script>Swal.fire('Good job!','You clicked the button!','success')</script>";
+            client::$errorMgs = "<script>Swal.fire('Good job!','use was added!','success')</script>";
 
         }else{
             client::$errorMgs = "<script>Swal.fire({icon: 'error',title: 'Oops...',text: 'email exist!',})</script>";

@@ -1,7 +1,6 @@
 <?php 
 if(isset($_POST)){
     if(!empty($_POST['name']) && !empty($_POST['address']) && !empty($_POST['ville']) && !empty($_POST['email']) && !empty($_POST['phone']) && !empty($_POST['password']) && !empty($_POST['r_password']) ){
-        var_dump($_POST);
         require_once '../method/db.php';
         require_once '../method/client.php';
         $name = conn::test_input($_POST['name']);
