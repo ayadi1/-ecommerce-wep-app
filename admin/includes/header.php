@@ -13,7 +13,7 @@ if (isset($_SESSION) && !empty($_SESSION['admin'])) {
     <meta charset="UTF-8" />
     <title>marcana car</title>
 
-    
+
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
@@ -56,23 +56,25 @@ if (isset($_SESSION) && !empty($_SESSION['admin'])) {
                     <li class="nav-item">
                         <a class="nav-link" href="/marcana/index.php?p=produit">items</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="/marcana/index.php?p=contact">contact us</a>
+                    </li>
                 </ul>
                 <!-- Left links -->
-                <?php if(!$logged){?>
-                <div class="d-flex align-items-center">
-                    <a role="button" href="index.php?p=home" type="button" class="btn btn-link px-3 me-2 text-theme">
-                        Login
-                    </a>
-                    
-                </div>
-                <?php }else{?>
-                <div class="d-flex align-items-center">
-                    <a role="button" href="index.php?p=dashboard" type="button" class="btn btn-primary btn-theme me-3">
-                        dashboard
-                    </a>
-                </div>
-                <?php }?>
+                <?php if (!$logged) { ?>
+                    <div class="d-flex align-items-center">
+                        <a role="button" href="index.php?p=home" type="button" class="btn btn-link px-3 me-2 text-theme">
+                            Login
+                        </a>
+
+                    </div>
+                <?php } else { ?>
+                    <div class="d-flex align-items-center">
+                        <a role="button" href="index.php?p=dashboard" type="button" class="btn btn-primary btn-theme me-3">
+                            dashboard
+                        </a>
+                    </div>
+                <?php } ?>
 
             </div>
             <!-- Collapsible wrapper -->

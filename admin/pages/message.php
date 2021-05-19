@@ -1,38 +1,41 @@
 <?php
-
 if (isset($_SESSION) && !empty($_SESSION['admin'])) {
 } else {
     echo "<script>window.location.href = 'index.php?=home'</script>";
 }
-
 ?>
+
 <section class='main_page d-flex'>
     <div class="slider">
         <?php require_once 'includes/sidebar.php'; ?>
     </div>
-    <section class='proTable'>
+    <div>
         <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">category name</th>
-                    <th scope="col">action</th>
+                    <th scope="col">name</th>
+                    <th scope="col">email</th>
+                    <th scope="col">message</th>
+                    <th scope="col">date</th>
                 </tr>
             </thead>
             <tbody class='table-hover'>
-                <?php require_once '../method/admin.php';
-                $categoryList = admin::GetAllCategory();
+                <?php require_once '../method/message.php';
+                $emailList = message::getAllMessage();
                 ?>
-                <?php foreach ($categoryList as $a) { ?>
+                <?php foreach ($emailList as $a) { ?>
                     <tr>
-                        <td><?= $a['id_categorie'] ?></td>
+                        <td><?= $a['id_message'] ?></td>
                         <td><?= $a['nom'] ?></td>
-                        <td><a href="../action/delete.php?key=cat&id=<?= $a['id_categorie'] ?>"> <i style="color:red" class="far fa-trash-alt"></i></a>  <a href="index.php?p=editCategory&id=<?= $a['id_categorie'] ?>"><i class="far  fa-edit" id="edit-product"></i></a></td>
-
-
+                        <td><?= $a['email'] ?></td>
+                        <td><?= $a['mesage'] ?></td>
+                        <td><?= $a['date_send'] ?></td>
                     </tr>
                 <?php } ?>
+
             </tbody>
         </table>
-    </section>
+
+    </div>
 </section>

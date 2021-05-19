@@ -2,9 +2,11 @@
 class message
 {
     public  static  $errorMgs = [];
-    public static function sendMessage($email,$nom,$message){
-        try{
-            require_once 'functions/db.php';
+    public static function sendMessage($email,$nom,$message)
+    {
+        try
+        {
+            require_once '../method/db.php';
             $email = conn::test_input($email);
             $nom = conn::test_input($nom);
             $message = conn::test_input($message);
@@ -16,6 +18,20 @@ class message
         }catch(PDOException $e){
             echo $e->getMessage();
         }
+
+    }
+    public static function getAllMessage()
+    {
+        require_once '../method/db.php';
+        $sql = "SELECT * FROM `message_box`";
+        $r = conn::DB('marcana')->prepare($sql);
+        $r->execute();
+        if($r->rowCount()> 0){
+            return $r->fetchAll();
+        }else{
+            return null;
+        }
+
 
     }
 }

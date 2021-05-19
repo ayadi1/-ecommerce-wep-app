@@ -10,7 +10,7 @@ if (isset($_GET) && !empty($_GET['p'])) {
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
-       
+
 
         <li>
             <a href="index.php?p=dashboard" class="nav-link <?php echo $c_page == 'dashboard' ? 'active' : 'link-dark' ?>">
@@ -28,6 +28,12 @@ if (isset($_GET) && !empty($_GET['p'])) {
             <a href="index.php?p=category" class="nav-link <?php echo $c_page  == 'category' ? 'active' : 'link-dark' ?>">
                 <i class="fas fa-list"></i>
                 category
+            </a>
+        </li>
+        <li>
+            <a href="index.php?p=message" class="nav-link <?php echo $c_page  == 'message' ? 'active' : 'link-dark' ?>">
+                <i class="fas fa-list"></i>
+                email list
             </a>
         </li>
     </ul>

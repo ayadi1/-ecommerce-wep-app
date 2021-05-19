@@ -56,6 +56,18 @@ class admin{
         return $r->fetchAll();
 
     }
+    public static function GetCategoryById($id_category)
+    {
+        require_once 'db.php';
+        $sql = "SELECT * FROM `categories` WHERE `id_categorie` = '$id_category'";
+        $r = conn::DB('marcana')->prepare($sql);
+        $r->execute();
+        if($r->rowCount() >0){
+            return $r->fetchAll();
+        }else{
+            return null;
+        }
+    }
     
 
 } 

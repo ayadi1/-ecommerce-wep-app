@@ -59,6 +59,9 @@ if (isset($_SESSION) && !empty($_SESSION['client'])) {
                     <li class="nav-item">
                         <a class="nav-link" href="/marcana/index.php?p=produit">items</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/marcana/index.php?p=contact">contact us</a>
+                    </li>
 
                 </ul>
                 <!-- Left links -->
@@ -80,11 +83,11 @@ if (isset($_SESSION) && !empty($_SESSION['client'])) {
                         </a>
                     </div>
                     <div class="d-flex align-items-center">
-                    <!-- get order number -->
-                    <?php  
-                    require_once 'method/order.php';
+                        <!-- get order number -->
+                        <?php
+                        require_once 'method/order.php';
                         $orderNumber = order::CountOrderByCLient($id_c);
-                    ?>
+                        ?>
                         <span class='product-number'><?= $orderNumber[0]['orderNumber'] ?></span>
                         <a role="button" href="dashboard.php?p=order" type="button" class="btn btn-primary btn-floating me-3">
                             <i class="fas fa-shopping-cart"></i>

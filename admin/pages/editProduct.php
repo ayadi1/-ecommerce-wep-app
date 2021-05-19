@@ -6,8 +6,7 @@
     if (empty($product)) {
         echo '<script>window.location.href = "index.php?=home" </script>';
     } else {
-    }
-?>
+    }?>
 
     <?php if (isset($_SESSION) && !empty($_SESSION['admin'])) {
     } else {
