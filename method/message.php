@@ -34,4 +34,21 @@ class message
 
 
     }
+    public static function getMessageNumber()
+    {
+        try {
+            require_once 'db.php';
+
+            $sql = "SELECT COUNT(*) as number FROM `message_box` ";
+            $r = conn::DB('marcana')->prepare($sql);
+            $r->execute();
+            if ($r->rowCount() > 0) {
+                return $r->fetchAll();
+            } else {
+                return null;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 }

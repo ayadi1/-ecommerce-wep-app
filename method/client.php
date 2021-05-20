@@ -122,4 +122,21 @@ class client{
             echo $e->getMessage();
         }
     }
+    public static function getClientNumber()
+    {
+        try {
+            require_once 'db.php';
+
+            $sql = "SELECT COUNT(*) as number FROM `client` ";
+            $r = conn::DB('marcana')->prepare($sql);
+            $r->execute();
+            if ($r->rowCount() > 0) {
+                return $r->fetchAll();
+            } else {
+                return null;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 }

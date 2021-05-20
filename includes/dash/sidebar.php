@@ -1,4 +1,7 @@
-
+<?php 
+    require_once 'method/client.php';
+    $client =  client::getClientInfo($id);
+?>
 <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
     <a href="dashboard.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
         <i class="fas fa-tachometer-alt fa-2x"></i>
@@ -26,7 +29,7 @@
     <div class="dropdown">
         <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong>mdo</strong>
+            <strong><?= $client[0]['nom'] ?></strong>
         </a>
         <ul class="dropdown-menu text-small shadow" id="list-sidebar">
             <li><a class="dropdown-item" href="dashboard.php?p=settings">Settings</a></li>
