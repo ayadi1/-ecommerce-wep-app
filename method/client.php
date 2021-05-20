@@ -1,5 +1,4 @@
 <?php
-session_start();
 class client{
 
     public  static  $errorMgs = [];
@@ -29,6 +28,7 @@ class client{
             $r = $r->fetch();
             // var_dump($r['password']);
             if (password_verify($password, $r['password'])) {
+                session_start();
 
                 $_SESSION['client']['id'] = $r['id_client'];
                 $_SESSION['client']['id_admin'] = $r['id_admin'];
@@ -78,5 +78,48 @@ class client{
 
 
     }
-    
+    public static function getClientInfo($id_clinet)
+    {
+        require_once 'db.php';
+
+        $sql = "SELECT * FROM `client` WHERE `id_client` = '$id_clinet'";
+        $r = conn::DB('marcana')->prepare($sql);
+        $r->execute();
+        if ($r->rowCount() > 0) {
+            return $r->fetchAll();
+        } else {
+            return null;
+        }
+    }
+    public static function updateClientPassword($id_client,$pss)
+    {
+        require_once 'db.php';
+        $pss = conn::test_input($pss);
+        try {
+
+            $sql = "UPDATE `client` SET `password` = '$pss'  WHERE `id_client` = '$id_client' ";
+            $r = conn::DB('marcana')->prepare($sql);
+            $r->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+    public static function updateClientInfo($id_client,$name,$email,$address,$ville,$tele)
+    {
+        require_once 'db.php';
+        $id_client = conn::test_input($id_client);
+        $name = conn::test_input($name);
+        $email = conn::test_input($email);
+        $address = conn::test_input($address);
+        $ville = conn::test_input($ville);
+        $tele = conn::test_input($tele);
+        try {
+
+            $sql = "UPDATE `client` SET `nom`='$name',`email`='$email',`adress`='$address',`ville`='$ville',`tele`='$tele'  WHERE `id_client` = '$id_client' ";
+            $r = conn::DB('marcana')->prepare($sql);
+            $r->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 }

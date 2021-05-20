@@ -46,4 +46,33 @@
             echo $e->getMessage();
         }
     }
+    public static function getRandomItem()
+    {
+        require_once 'db.php';
+        try {
+            $sql = "SELECT p.id_produit, p.nom,p.prix,p.discription,p.img ,p.img ,c.nom as category  FROM produit p INNER JOIN categories c on c.id_categorie = p.id_categorie  limit 6 ";
+            $r = conn::DB('marcana')->prepare($sql);
+            $r->execute();
+            return $r->fetchAll();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+    public static function searchForItemByName($name)
+    {
+        require_once 'db.php';
+        $name = conn::test_input($name);
+        try {
+            $sql = "SELECT p.id_produit, p.nom,p.prix,p.discription,p.img ,p.img ,c.nom as category  FROM produit p INNER JOIN categories c on c.id_categorie = p.id_categorie  where p.nom like '%$name%' ";
+            $r = conn::DB('marcana')->prepare($sql);
+            $r->execute();
+            if($r->rowCount() > 0 ){
+                return $r->fetchAll();
+            }else{
+                return null;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 }

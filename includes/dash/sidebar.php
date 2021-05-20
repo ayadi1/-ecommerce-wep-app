@@ -1,3 +1,4 @@
+
 <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
     <a href="dashboard.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
         <i class="fas fa-tachometer-alt fa-2x"></i>
@@ -18,12 +19,7 @@
                 Orders
             </a>
         </li>
-        <li>
-            <a href="dashboard.php?p=product" class="nav-link <?php echo $_SERVER['REQUEST_URI'] == '/marcana/dashboard.php?p=product' ? 'active' : 'link-dark' ?>">
-                <i class="fas fa-list"></i>
-                Product
-            </a>
-        </li>
+
 
     </ul>
     <hr>
@@ -32,8 +28,8 @@
             <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
             <strong>mdo</strong>
         </a>
-        <ul class="dropdown-menu text-small shadow" id="list-sidebar" >
-            <li><a class="dropdown-item" href="#">Settings</a></li>
+        <ul class="dropdown-menu text-small shadow" id="list-sidebar">
+            <li><a class="dropdown-item" href="dashboard.php?p=settings">Settings</a></li>
             <li><a class="dropdown-item" href="#">Profile</a></li>
             <li>
                 <hr class="dropdown-divider">

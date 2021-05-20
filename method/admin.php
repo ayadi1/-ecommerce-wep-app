@@ -68,6 +68,46 @@ class admin{
             return null;
         }
     }
+    public static function getAdmenInfo()
+    {
+        require_once 'db.php';
+
+        $sql = "SELECT * FROM `admin` WHERE `id_admin` = 1";
+        $r = conn::DB('marcana')->prepare($sql);
+        $r->execute();
+        if ($r->rowCount() > 0) {
+            return $r->fetchAll();
+        } else {
+            return null;
+        }
+    }
+    public static function updateAdminInfo($name,$email)
+    {
+        require_once 'db.php';
+        $name = conn::test_input($name);
+        $email = conn::test_input($email);
+        try{
+
+            $sql = "UPDATE `admin` SET `nom`= '$name',`email`= '$email' WHERE `id_admin` = 1";
+            $r = conn::DB('marcana')->prepare($sql);
+            $r->execute();
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+    public static function updateAdminPassword($pss)
+    {
+        require_once 'db.php';
+        $pss = conn::test_input($pss);
+        try {
+
+            $sql = "UPDATE `admin` SET `password` = '$pss'  WHERE `id_admin` = 1";
+            $r = conn::DB('marcana')->prepare($sql);
+            $r->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
     
 
 } 

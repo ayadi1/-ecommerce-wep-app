@@ -12,4 +12,7 @@ if(isset($_SESSION)&&!empty($_SESSION['client'])){
             
         }
     }
+}else{
+    echo '<script>window.location.href = "../index.php?p=produit"</script>';
+
 }
