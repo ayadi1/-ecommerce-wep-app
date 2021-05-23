@@ -2,7 +2,7 @@
 require_once 'method/produit.php';
 $productList = produit::getAllProduct();
 ?>
-<div class="container row mt-5 mb-5">
+<div class="container row mt-5 mb-5 m-auto">
     <?php foreach ($productList as $a) { ?>
 
 

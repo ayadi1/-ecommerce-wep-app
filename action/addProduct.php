@@ -22,7 +22,7 @@ if (isset($_FILES)) {
         
         if ($file_extension == "jpeg" || $file_extension == "jpg" || $file_extension == "png" || $file_extension == "PNG") {
             if ($file_size < 2097152) {
-                echo $file_extension;
+               
                 
                 
                 move_uploaded_file($file_tmp, "../assets/images/uploads/" . $imageName . $file_name);

@@ -50,17 +50,18 @@
             </button>
         </div>
     </section>
+    <!-- search -->
     <section class='search mt-5'>
         <div class="row">
             <form method="get">
                 <div class="row mb-4 d-flex justify-content-center">
-                    <div class="col-3">
+                    <div class="col-md-3 col-xs-5">
                         <div class="form-outline">
                             <input type="text" name="item" id="form3Example1" class="form-control" />
                             <label class="form-label" for="form3Example1">item name</label>
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-md-3 col-xs-5">
                         <div class="form-outline">
                             <button type="submit" class="btn btn-primary btn-block mb-4">Search</button>
                         </div>
@@ -73,37 +74,37 @@
         if (isset($_GET) && !empty($_GET['item'])) {
             require_once 'method/produit.php';
             $search = produit::searchForItemByName($_GET['item']);
-        
+
         ?>
-        <?php if ( $search == null) { ?>
-            <h2>no search results</h2>
+            <?php if ($search == null) { ?>
+                <h2>no search results</h2>
 
-        <?php } else { ?>
-            <h2>search results</h2>
-            <div class="container row mt-5 mb-5">
-                <?php foreach ($search as $b) { ?>
-                    <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                        <div class="card">
-                            <img class="card-img" src="assets/images/uploads/<?= $b['img'] ?>" alt="<?= $b['nom'] ?>">
+            <?php } else { ?>
+                <h2>search results</h2>
+                <div class="container row mt-5 mb-5">
+                    <?php foreach ($search as $b) { ?>
+                        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                            <div class="card">
+                                <img class="card-img" src="assets/images/uploads/<?= $b['img'] ?>" alt="<?= $b['nom'] ?>">
 
-                            <div class="card-body">
-                                <h4 class="card-title"><?= $b['nom'] ?></h4>
-                                <h6 class="card-subtitle mb-2 text-muted">category: <?= $b['category'] ?></h6>
-                                <p class="card-text">
-                                    <?= $b['discription'] ?>
-                                </p>
+                                <div class="card-body">
+                                    <h4 class="card-title"><?= $b['nom'] ?></h4>
+                                    <h6 class="card-subtitle mb-2 text-muted">category: <?= $b['category'] ?></h6>
+                                    <p class="card-text">
+                                        <?= $b['discription'] ?>
+                                    </p>
 
-                                <div class="buy d-flex justify-content-between align-items-center">
-                                    <div class="price text-success">
-                                        <h5 class="mt-4">$<?= $b['prix'] ?></h5>
+                                    <div class="buy d-flex justify-content-between align-items-center">
+                                        <div class="price text-success">
+                                            <h5 class="mt-4">$<?= $b['prix'] ?></h5>
+                                        </div>
+                                        <a href="action/AddToOrderList.php?id_p=<?= $b['id_produit']  ?>" class="btn btn-danger mt-3 mb-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                                     </div>
-                                    <a href="action/AddToOrderList.php?id_p=<?= $b['id_produit']  ?>" class="btn btn-danger mt-3 mb-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <?php } ?>
-            </div>
+                    <?php } ?>
+                </div>
 
         <?php }
         } ?>
