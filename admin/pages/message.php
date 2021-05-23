@@ -5,12 +5,12 @@ if (isset($_SESSION) && !empty($_SESSION['admin'])) {
 }
 ?>
 
-<section class='main_page d-flex'>
-    <div class="slider">
+<section class='main_page row'>
+    <div class="slider col-md-3 col-lg-3 col-xs-12 ">
         <?php require_once 'includes/sidebar.php'; ?>
     </div>
-    <div>
-        <table class="table table-hover">
+    <main class='col-md-9 col-lg-9 col-xs-12 '>
+        <table class="table table-hover mt-5">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -37,5 +37,5 @@ if (isset($_SESSION) && !empty($_SESSION['admin'])) {
             </tbody>
         </table>
 
-    </div>
+    </main>
 </section>
